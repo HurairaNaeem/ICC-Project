@@ -1,0 +1,124 @@
+<html>
+  <head>
+    <title>ICC Project</title>
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"></script>
+<style>
+#title{
+  padding: 0.15em;
+}
+#main{
+  background-color:#1c1c1c;
+}
+#heading{
+  text-align: center;
+  margin-left: 10%;
+  margin-right:10%;
+  margin-top: 2em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  background-color: #000;
+  color: #1b7bb5;
+  font-size:1.5em;
+  border-radius:0.5em;
+  border-style:solid;
+  border-width:0.5em;
+  border-color:#1b7bb5 !important;
+}
+#description{
+  font-size: 2em;
+  text-align: center;
+  padding: 0;
+  margin:0;
+}
+#new_container{
+  margin-left: 20%;
+  margin-right:20%;
+  margin-top: 2em;
+  margin-bottom:2em;
+  padding: 30px;
+  background-color: #000;
+  color: #FFF;
+  font-size:1.5em;
+  border-radius:0.5em;
+  border-style:solid;
+  border-color:#1b7bb5;
+  border-width:0.5em;
+}
+
+p{
+  margin: 0.5em;
+}
+
+button{
+    background-color:#1b7bb5;
+    border:none;
+    margin: 30px;
+    text-align:center;
+    font-weight:bold;
+    font-size:16px;
+}
+input,textarea,select{
+  background-color:#1c1c1c;
+  border-color:#1c1c1c;
+  color:grey;
+}
+</style>
+  </head>
+  <body id='main'>
+    <div id='heading-border'>
+        <div id='heading'>
+        <h1 id='title'>ICC Project!</h1>
+        <p id='description'>Object Detection</p>
+        </div>
+    </div>
+    <div id="new_container">
+        <div class="container">
+        <div class="row text-center">
+            <div class="col-sm-4">
+                <form id='survey-form' action="/onClick1" method="GET">
+                    <button type='submit' class="btn btn-dark"> Load Image</button>
+                </form>
+            </div>
+            <div class="col-sm-4">
+                <form action="/onClick2" method="GET">
+                    <button type='submit' class="btn btn-dark"> Label Image</button>
+                </form>
+            </div>
+            <div class="col-sm-4">
+                <form action="/onClick3" method="GET">
+                    <button type='submit' class="btn btn-dark"> Bonus Line</button>
+                </form>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-sm-12">
+                <img id="image" src="" style="width: 300px">
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="undefined" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            console.log("ready!");
+            const b64 = 'data:image/jpeg;base64,';
+            img = "{{ img }}";
+            if (img === "") {
+                $('#image').hide()
+            }
+            else {
+                img = b64 + img;
+            }
+            if (img !== "" && img !== null) {
+                $('#image').show()
+                document.getElementById('image').setAttribute('src', img);
+            }
+        });
+    </script>
+  </body>
+</html>
