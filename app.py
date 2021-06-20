@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from PIL import Image, ImageTk
+from PIL import Image
 import numpy as np
 import cv2
 import base64
